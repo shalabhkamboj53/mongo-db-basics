@@ -1,4 +1,5 @@
 const swaggerJSDoc = require("swagger-jsdoc");
+require("dotenv").config();
 
 const options = {
   definition: {
@@ -10,10 +11,15 @@ const options = {
         "API documentation for database setup, seeding, and MongoDB practice queries.",
     },
     servers: [
-      {
-        url: "http://localhost:3000",
-        description: "Local server",
-      },
+      process.env.ENVIRONMENT === "development"
+        ? {
+            url: "http://localhost:3000",
+            description: "Local server",
+          }
+        : {
+            url: "https://mongo-db-basics.vercel.app",
+            description: "Production server",
+          },
     ],
     tags: [{ name: "Mongo Commands" }, { name: "CRUD" }],
     paths: {
