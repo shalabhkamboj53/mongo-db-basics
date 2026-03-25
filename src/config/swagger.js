@@ -147,7 +147,7 @@ const options = {
           },
         },
       },
-      "/crud": {
+      "/crud/read-all": {
         get: {
           tags: ["CRUD"],
           summary: "Get all items",
@@ -178,6 +178,8 @@ const options = {
             },
           },
         },
+      },
+      "/crud/create": {
         post: {
           tags: ["CRUD"],
           summary: "Create a new item",
@@ -234,7 +236,7 @@ const options = {
           },
         },
       },
-      "/crud/{id}": {
+      "/crud/read-one/{id}": {
         get: {
           tags: ["CRUD"],
           summary: "Get item by id",
@@ -299,6 +301,8 @@ const options = {
             },
           },
         },
+      },
+      "/crud/update/{id}": {
         put: {
           tags: ["CRUD"],
           summary: "Update item by id",
@@ -377,6 +381,8 @@ const options = {
             },
           },
         },
+      },
+      "/crud/delete/{id}": {
         delete: {
           tags: ["CRUD"],
           summary: "Delete item by id",

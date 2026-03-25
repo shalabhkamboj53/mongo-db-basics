@@ -10,7 +10,7 @@ function parseId(idParam) {
   return mongoose.isValidObjectId(idParam) ? idParam : null;
 }
 
-router.get("/", async (req, res, next) => {
+router.get("/read-all", async (req, res, next) => {
   try {
     const users = await CrudUser.find({}, { name: 1, _id: 1 });
     res.status(200).json({ data: users });
@@ -19,7 +19,7 @@ router.get("/", async (req, res, next) => {
   }
 });
 
-router.get("/:id", async (req, res, next) => {
+router.get("/read-one/:id", async (req, res, next) => {
   const id = parseId(req.params.id);
   if (!id) {
     return res.status(400).json({ message: "Invalid user id" });
@@ -37,7 +37,7 @@ router.get("/:id", async (req, res, next) => {
   }
 });
 
-router.post("/", validateCrudUser, async (req, res, next) => {
+router.post("/create", validateCrudUser, async (req, res, next) => {
   try {
     const user = await CrudUser.create({ name: req.body.name });
     res.status(201).json({ data: user });
@@ -46,7 +46,7 @@ router.post("/", validateCrudUser, async (req, res, next) => {
   }
 });
 
-router.put("/:id", validateCrudUser, async (req, res, next) => {
+router.put("/update/:id", validateCrudUser, async (req, res, next) => {
   const id = parseId(req.params.id);
   if (!id) {
     return res.status(400).json({ message: "Invalid user id" });
@@ -69,7 +69,7 @@ router.put("/:id", validateCrudUser, async (req, res, next) => {
   }
 });
 
-router.delete("/:id", async (req, res, next) => {
+router.delete("/delete/:id", async (req, res, next) => {
   const id = parseId(req.params.id);
   if (!id) {
     return res.status(400).json({ message: "Invalid user id" });
