@@ -37,7 +37,7 @@ router.post('/seed', async (req, res, next) => {
 
 router.get('/users/read', async (req, res, next) => {
   try {
-    const result = await readOperations(req.query.city || 'Delhi');
+    const result = await readOperations(req.query.city || 'Yamunanagar');
     res.status(200).json(result);
   } catch (error) {
     next(error);
