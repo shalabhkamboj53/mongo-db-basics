@@ -16,8 +16,4 @@ async function startServer() {
   }
 }
 
-if (process.env.ENVIRONMENT === "development") {
-  startServer();
-} else {
-  module.exports = app;
-}
+startServer();
