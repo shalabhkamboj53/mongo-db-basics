@@ -15,15 +15,9 @@ app.use(addTimeStamp);
 app.use('/api', taskRoutes);
 app.use('/user', CRUDRoutes);
 
-app.get('/api-docs', (req, res) => {
-  res.redirect(301, '/api-docs/');
-});
-
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
-app.get('/api-docs.json', (req, res) => {
-  res.setHeader('Content-Type', 'application/json');
-  res.send(swaggerSpec);
-});
+app.use('/api-docs', swaggerUi.serve);
+app.get('/api-docs', swaggerUi.setup(swaggerSpec));
+app.get('/api-docs/', swaggerUi.setup(swaggerSpec));
 
 app.use((err, req, res, next) => {
   res.status(500).json({
