@@ -10,6 +10,9 @@ const {
   sortingAndLimiting,
   countAndDistinct,
   indexingAndPerformance,
+  userAggregation,
+  ordersCollectionTasks,
+  finalAssignmentQueries,
 } = require('../services/taskService');
 
 const router = express.Router();
@@ -98,6 +101,33 @@ router.get('/users/count-distinct', async (req, res, next) => {
 router.post('/users/indexing', async (req, res, next) => {
   try {
     const result = await indexingAndPerformance();
+    res.status(200).json(result);
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.get('/users/aggregation', async (req, res, next) => {
+  try {
+    const result = await userAggregation();
+    res.status(200).json(result);
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.get('/orders/tasks', async (req, res, next) => {
+  try {
+    const result = await ordersCollectionTasks();
+    res.status(200).json(result);
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.get('/assignment/final', async (req, res, next) => {
+  try {
+    const result = await finalAssignmentQueries();
     res.status(200).json(result);
   } catch (error) {
     next(error);

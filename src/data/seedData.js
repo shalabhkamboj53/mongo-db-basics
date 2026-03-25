@@ -1,4 +1,5 @@
 const users = [
+  { name: 'User1', age: 100, city: 'test', email: 'test@example.com' },
   { name: 'Shalabh Kamboj', age: 24, city: 'Yamunanagar', email: 'shalabh@example.com' },
   { name: 'Taman', age: 29, city: 'Mohali', email: 'taman@example.com' },
   { name: 'Vishal', age: 31, city: 'Rajasthan', email: 'vishal@example.com' },
